@@ -5,18 +5,27 @@ public class Player : MonoBehaviour {
 
     PlayerMovement move;
     PlayerFire fire;
+    public int joyNum;
 
 	// Use this for initialization
-	void Start () {
-        move = GetComponent<PlayerMovement>();
-        move.Init(1, GetComponent<Rigidbody2D>());
-
-        fire = GetComponent<PlayerFire>();
-        fire.Init(1);
+	void Start () {        
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+
+    public void Create(int _joyNum)
+    {
+        joyNum = _joyNum;
+        GetComponent<PlayerMovement>().Init(joyNum,GetComponent<Rigidbody2D>());
+        GetComponent<PlayerFire>().Init(joyNum);
+    }
+
+    public void TakeDamage(GameObject killer)
+    {
+        GameObject.Find("DeathMatch").GetComponent<DeathMatch>().AddScore(killer.GetComponent<Player>().joyNum, 1);
+    }
+
 }

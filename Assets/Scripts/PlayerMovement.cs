@@ -8,7 +8,9 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody2D mBody;
     public float Speed;
     private bool mJumped = false;
-    private float mDistToGround;
+    public bool faceLeft = true;
+    public bool grounded = true;
+
 	// Use this for initialization
 	void Start () {
         
@@ -21,14 +23,30 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetButton("Horizontal" + joyNum))
         {
             sumX += Input.GetAxisRaw("Horizontal" + joyNum);
+            float scale = Mathf.Clamp(sumX, -1, 1);
+            if(faceLeft && sumX > 0)
+            {
+                faceLeft = false;
+                Vector3 theScale = transform.localScale;
+                theScale.x *= -1;
+                transform.localScale = theScale;
+            }
+            else if(!faceLeft && sumX < 0)
+            {
+                faceLeft = true;
+                Vector3 theScale = transform.localScale;
+                theScale.x *= -1;
+                transform.localScale = theScale;
+            }
         }
-        if(Input.GetButtonDown("Jump" + joyNum) && OnGround())
+       
+        if(Input.GetButtonDown("Jump" + joyNum) && grounded)
         {
             mBody.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
+            GetComponent<Animator>().SetTrigger("Jump");
         }
         sumX *= (Speed * Time.deltaTime);
         transform.position += new Vector3(sumX, 0);
-        
         
 	}
 
@@ -36,24 +54,17 @@ public class PlayerMovement : MonoBehaviour {
     {
         joyNum = playerNum;
         mBody = body;
-        mDistToGround = GetComponent<Collider2D>().bounds.extents.y;
     }
 
-    public bool OnGround()
+    
+    public void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.DrawRay(transform.position - new Vector3(0, GetComponent<Collider2D>().bounds.extents.y), -Vector3.up - new Vector3(0, 0.1f, 0), Color.red, 10f);
-        if (Physics2D.Raycast(transform.position - new Vector3(0, GetComponent<Collider2D>().bounds.extents.y), -Vector2.up, mDistToGround))
-        {
-            try
-            {
-                return true;
-            }
-            catch (System.NullReferenceException) { return false; }
-        }
-        else
-        {
-            return false;
-        }
+        grounded = true;
+    }
+
+    public void OnTriggerExit2D(Collider2D col)
+    {
+        grounded = false;
         
     }
 }
