@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class SpawnHandlerScript : MonoBehaviour {
+
+     List<GameObject> SpawnPoints;
 
 	// Use this for initialization
 	void Start () {
@@ -12,4 +15,14 @@ public class NewBehaviourScript : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void AddSpawnPoint(GameObject spawnPoint_)
+    {
+        SpawnPoints.Add(spawnPoint_);
+    }
+
+    public void Spawn(GameObject _player)
+    {
+        SpawnPoints[(int)Random.Range(0, SpawnPoints.Count)].GetComponent<SpawnPointScript>().Spawn(_player);
+    }
 }
