@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour {
     private float mDistToGround;
     bool faceLeft = true;
     bool pausedSprite = false;
+    public bool grounded = true;
 
 	// Use this for initialization
 	void Start () {
@@ -51,7 +52,7 @@ public class PlayerMovement : MonoBehaviour {
             pausedSprite = true;
             GetComponent<Animator>().enabled = false;
         }
-        if(Input.GetButtonDown("Jump" + joyNum) && OnGround())
+        if(Input.GetButtonDown("Jump" + joyNum) && grounded)
         {
             mBody.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
         }
@@ -68,21 +69,14 @@ public class PlayerMovement : MonoBehaviour {
         mDistToGround = GetComponent<Collider2D>().bounds.extents.y;
     }
 
-    public bool OnGround()
+    
+    public void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.DrawRay(transform.position - new Vector3(0, GetComponent<Collider2D>().bounds.extents.y), -Vector3.up - new Vector3(0, 0.1f, 0), Color.red, 10f);
-        if (Physics2D.Raycast(transform.position - new Vector3(0, GetComponent<Collider2D>().bounds.extents.y), -Vector2.up, mDistToGround))
-        {
-            try
-            {
-                return true;
-            }
-            catch (System.NullReferenceException) { return false; }
-        }
-        else
-        {
-            return false;
-        }
-        
+        grounded = true;
+    }
+
+    public void OnTriggerExit2D(Collider2D col)
+    {
+        grounded = false;
     }
 }
