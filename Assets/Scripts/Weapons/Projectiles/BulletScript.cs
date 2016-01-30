@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BulletScript : Projectile {
 
-	float lifeTime = 1;
+	public float lifeTime = 1;
 
 	void Start () {
 	}

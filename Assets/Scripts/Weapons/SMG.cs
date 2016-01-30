@@ -24,8 +24,9 @@ public class SMG : Weapon {
 
 		GameObject g = Instantiate(projectilePrototype);
 		g.transform.position = transform.position;
-		g.GetComponent<BulletScript>().speed = direction * 10 + new Vector2(Random.Range(-3, 3), Random.Range(-3, 3));
+		g.GetComponent<BulletScript>().speed = direction * 0.1f;
 		g.GetComponent<Projectile>().owner = owner;
+		g.GetComponent<BulletScript>().lifeTime = 5;
 
 		shootTimer = delay;
 	}

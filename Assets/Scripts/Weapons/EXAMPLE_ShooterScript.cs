@@ -19,6 +19,6 @@ public class EXAMPLE_ShooterScript : MonoBehaviour {
         }
 
         weapon.transform.position = transform.position;
-        weapon.GetComponent<Weapon>().direction = new Vector3(0, -1, 0);
+        weapon.GetComponent<Weapon>().direction = transform.up;
 	}
 }
