@@ -22,9 +22,10 @@ public class LaserWeapon : Weapon {
 			return;
 
 		GameObject g = Instantiate(projectilePrototype);
-		g.transform.position = transform.position;
+		g.transform.position = transform.position + (new Vector3(direction.x, direction.y, 0) * 1.5f);
 		g.GetComponent<Projectile>().speed = direction;
 		g.GetComponent<Projectile>().owner = owner;
+		g.GetComponent<LaserProjectile>().bounceObject = owner;
 
 		shootTimer = delay;
 	}
