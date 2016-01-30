@@ -27,5 +27,6 @@ public class DeathMatch : GameMode {
     public void AddScore(int player, int amount)
     {
         Scores[player - 1] += amount;
+        Debug.Log(Scores[player - 1]);
     }
 }

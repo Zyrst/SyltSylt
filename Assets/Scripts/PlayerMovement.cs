@@ -8,9 +8,7 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody2D mBody;
     public float Speed;
     private bool mJumped = false;
-    private float mDistToGround;
-    bool faceLeft = true;
-    bool pausedSprite = false;
+    public bool faceLeft = true;
     public bool grounded = true;
 
 	// Use this for initialization
@@ -24,11 +22,6 @@ public class PlayerMovement : MonoBehaviour {
         //mJumped = false;
         if (Input.GetButton("Horizontal" + joyNum))
         {
-            if(pausedSprite)
-            {
-                GetComponent<Animator>().enabled = true;
-                pausedSprite = false;
-            }
             sumX += Input.GetAxisRaw("Horizontal" + joyNum);
             float scale = Mathf.Clamp(sumX, -1, 1);
             if(faceLeft && sumX > 0)
@@ -45,20 +38,15 @@ public class PlayerMovement : MonoBehaviour {
                 theScale.x *= -1;
                 transform.localScale = theScale;
             }
-            
         }
-        else if(!pausedSprite)
-        {
-            pausedSprite = true;
-            GetComponent<Animator>().enabled = false;
-        }
+       
         if(Input.GetButtonDown("Jump" + joyNum) && grounded)
         {
             mBody.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
+            GetComponent<Animator>().SetTrigger("Jump");
         }
         sumX *= (Speed * Time.deltaTime);
         transform.position += new Vector3(sumX, 0);
-        
         
 	}
 
@@ -66,7 +54,6 @@ public class PlayerMovement : MonoBehaviour {
     {
         joyNum = playerNum;
         mBody = body;
-        mDistToGround = GetComponent<Collider2D>().bounds.extents.y;
     }
 
     
@@ -78,5 +65,6 @@ public class PlayerMovement : MonoBehaviour {
     public void OnTriggerExit2D(Collider2D col)
     {
         grounded = false;
+        
     }
 }
