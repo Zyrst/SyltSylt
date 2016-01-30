@@ -3,8 +3,9 @@ using System.Collections;
 
 public abstract class Weapon : MonoBehaviour {
 
-    public GameObject tonky;
+    public GameObject owner;
     public GameObject projectilePrototype;
+	public Vector2 direction;
 
     public Weapon() {
     }

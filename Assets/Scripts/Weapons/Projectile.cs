@@ -2,6 +2,6 @@
 using System.Collections;
 
 public class Projectile : MonoBehaviour {
-    public GameObject _owner;
-    public Vector2 _speed;
+    public GameObject owner;
+    public Vector2 speed;
 }

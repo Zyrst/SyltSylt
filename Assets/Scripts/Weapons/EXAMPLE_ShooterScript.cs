@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShooterScript : MonoBehaviour {
+public class EXAMPLE_ShooterScript : MonoBehaviour {
 
     public GameObject weapon;
 
 	void Start () {
         weapon = Instantiate(weapon);
-        weapon.GetComponent<Weapon>().tonky = transform.gameObject;
+        weapon.GetComponent<Weapon>().owner = transform.gameObject;
     }
 	
 	void Update () {
@@ -19,6 +19,6 @@ public class ShooterScript : MonoBehaviour {
         }
 
         weapon.transform.position = transform.position;
-        weapon.transform.up = new Vector3(0, -1, 0);
+        weapon.GetComponent<Weapon>().direction = new Vector3(0, -1, 0);
 	}
 }
