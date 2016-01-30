@@ -30,6 +30,7 @@ public class LaserProjectile : Projectile {
 		lineRenderer.SetPosition(0, renderStart);
 		lineRenderer.SetPosition(1, renderEnd);
 
+        bool shake = false;
 
 		if (rayHit.transform) {
 			//lineRenderer.SetPosition(0, transform.position);
@@ -47,6 +48,8 @@ public class LaserProjectile : Projectile {
 				clone.GetComponent<LaserProjectile>().speed = reflect; 
 				clone.GetComponent<LaserProjectile>().bounceObject = rayHit.collider.gameObject;
 				clone.GetComponent<LaserProjectile>().owner = owner;
+
+                shake = true;
 			}
 		}
 		else {
@@ -60,6 +63,9 @@ public class LaserProjectile : Projectile {
 			GameObject.Destroy(transform.gameObject);
 
 		bounced = true;
+
+        if (shake)
+            Camera.main.gameObject.GetComponent<CameraScript>().AddCameraShake(0.3f, 0.3f); 
 	}
 
 }

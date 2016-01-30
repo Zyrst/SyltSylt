@@ -22,6 +22,8 @@ public class CameraScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        GetComponent<ChromaticAberrationEffect>().intensity = 0;
+        CheckPlayers();
         //ResetPos();
         BorderCheck();
         if (mTimer >= 0.0f)
@@ -44,7 +46,7 @@ public class CameraScript : MonoBehaviour {
     /// </summary>
     /// <param name="in_strength"> 0.3f är lagom</param>
     /// <param name="in_timer"> 0.3f är lagom</param>
-    void AddCameraShake(float in_strength, float in_timer)
+    public void AddCameraShake(float in_strength, float in_timer)
     {
         //Add if already shaking
         if (mTimer > 0.0f)
@@ -81,6 +83,8 @@ public class CameraScript : MonoBehaviour {
         newPos.x += Random.Range(-mStrength, mStrength);
         newPos.y += Random.Range(-mStrength, mStrength);
         transform.position = newPos;
+
+        GetComponent<ChromaticAberrationEffect>().intensity = Mathf.Lerp(0f, 0.035f, mTimer / mMaxTimer); 
     }
 
     void ResetPos()
@@ -181,7 +185,9 @@ public class CameraScript : MonoBehaviour {
         averageX = (maxX + minX) / 2.0f;
         averageY = (maxY + minY) / 2.0f;
 
-        transform.position = new Vector3(averageX, averageY, transform.position.z);
+
+
+        transform.position = Vector3.Lerp(transform.position, new Vector3(averageX, averageY, transform.position.z), 0.2f);
 
         float dx = (maxX - minX) * Screen.height / Screen.width;
         float dy = maxY - minY;
