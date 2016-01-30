@@ -8,22 +8,14 @@ public class LaserProjectile : Projectile {
 	public float lifeTime = 1f;
 
 	bool bounced = false;
-<<<<<<< HEAD
-	GameObject bounceObject = null;
-=======
 	public GameObject bounceObject = null;
->>>>>>> bc889cb0121169e11b86b620c464e6890ed06215
 
 	void Start () {
 		lineRenderer = GetComponent<LineRenderer>();
 	}
 
 	void Update () {
-<<<<<<< HEAD
-		float castRadius = 0.5f;
-=======
 		float castRadius = 0.01f;
->>>>>>> bc889cb0121169e11b86b620c464e6890ed06215
 		Vector2 castDir = new Vector2(speed.x, speed.y);
 		Vector2 castStart = new Vector2(transform.position.x, transform.position.y) + (castDir * castRadius * 2);
 
