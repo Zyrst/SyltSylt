@@ -17,14 +17,23 @@ public class LaserProjectile : Projectile {
 	void Update () {
 		float castRadius = 0.01f;
 		Vector2 castDir = new Vector2(speed.x, speed.y);
-		Vector2 castStart = new Vector2(transform.position.x, transform.position.y) + (castDir * castRadius * 2);
+		Vector2 castStart = new Vector2(transform.position.x, transform.position.y) + (castDir * (castRadius + 0.5f));
 
 		//RaycastHit2D rayHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(speed.x, speed.y), 500);
 		RaycastHit2D rayHit = Physics2D.CircleCast(castStart, castRadius, castDir, 500);
 
+		Vector3 renderStart = transform.position;
+		Vector3 renderEnd = transform.position + (new Vector3(speed.x, speed.y, 0) * 500);
+		if (rayHit.transform)
+			renderEnd = rayHit.point;
+
+		lineRenderer.SetPosition(0, renderStart);
+		lineRenderer.SetPosition(1, renderEnd);
+
+
 		if (rayHit.transform) {
-			lineRenderer.SetPosition(0, transform.position);
-			lineRenderer.SetPosition(1, rayHit.point);
+			//lineRenderer.SetPosition(0, transform.position);
+			//lineRenderer.SetPosition(1, rayHit.point);
 
 
 			if (!bounced) {
@@ -38,19 +47,19 @@ public class LaserProjectile : Projectile {
 				clone.GetComponent<LaserProjectile>().speed = reflect; 
 				clone.GetComponent<LaserProjectile>().bounceObject = rayHit.collider.gameObject;
 				clone.GetComponent<LaserProjectile>().owner = owner;
-
-				bounced = true;
 			}
 		}
 		else {
-			lineRenderer.SetPosition(0, transform.position);
-			lineRenderer.SetPosition(1, transform.position + (new Vector3(speed.x, speed.y, 0) * 500));
+			//lineRenderer.SetPosition(0, transform.position);
+			//lineRenderer.SetPosition(1, transform.position + (new Vector3(speed.x, speed.y, 0) * 500));
 		}
 
 		if (lifeTime > 0)
 			lifeTime -= Time.deltaTime;
 		else
 			GameObject.Destroy(transform.gameObject);
+
+		bounced = true;
 	}
 
 }
