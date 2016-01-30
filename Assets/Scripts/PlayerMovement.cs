@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour {
     public float Speed;
     private bool mJumped = false;
     private float mDistToGround;
+    bool faceLeft = true;
+    bool pausedSprite = false;
+
 	// Use this for initialization
 	void Start () {
         
@@ -20,7 +23,33 @@ public class PlayerMovement : MonoBehaviour {
         //mJumped = false;
         if (Input.GetButton("Horizontal" + joyNum))
         {
+            if(pausedSprite)
+            {
+                GetComponent<Animator>().enabled = true;
+                pausedSprite = false;
+            }
             sumX += Input.GetAxisRaw("Horizontal" + joyNum);
+            float scale = Mathf.Clamp(sumX, -1, 1);
+            if(faceLeft && sumX > 0)
+            {
+                faceLeft = false;
+                Vector3 theScale = transform.localScale;
+                theScale.x *= -1;
+                transform.localScale = theScale;
+            }
+            else if(!faceLeft && sumX < 0)
+            {
+                faceLeft = true;
+                Vector3 theScale = transform.localScale;
+                theScale.x *= -1;
+                transform.localScale = theScale;
+            }
+            
+        }
+        else if(!pausedSprite)
+        {
+            pausedSprite = true;
+            GetComponent<Animator>().enabled = false;
         }
         if(Input.GetButtonDown("Jump" + joyNum) && OnGround())
         {

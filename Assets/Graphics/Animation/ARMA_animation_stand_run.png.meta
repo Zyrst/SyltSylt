@@ -1,0 +1,343 @@
+fileFormatVersion: 2
+guid: a50df086edde4e5409990cc316be9a28
+timeCreated: 1454162537
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ARMA_animation_stand_run_0
+    21300002: ARMA_animation_stand_run_1
+    21300004: ARMA_animation_stand_run_2
+    21300006: ARMA_animation_stand_run_3
+    21300008: ARMA_animation_stand_run_4
+    21300010: ARMA_animation_stand_run_5
+    21300012: ARMA_animation_stand_run_6
+    21300014: ARMA_animation_stand_run_7
+    21300016: ARMA_animation_stand_run_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: ARMA_animation_stand_run_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 45, y: -15}
+        - {x: 42, y: -18}
+        - {x: 26, y: -1}
+        - {x: -6, y: 21}
+        - {x: -19, y: 29}
+        - {x: -44, y: 29}
+        - {x: -56, y: 5}
+        - {x: -56, y: -49}
+        - {x: -39, y: -64}
+        - {x: 49, y: -64}
+        - {x: 56, y: -61}
+        - {x: 56, y: -27}
+        - {x: 48, y: -13}
+      - - {x: 36, y: -16}
+        - {x: 39, y: -15}
+        - {x: 39, y: -12}
+        - {x: 36, y: -11}
+        - {x: 34, y: -13}
+      - - {x: -51, y: 18}
+        - {x: -51, y: 17}
+        - {x: -48, y: 14}
+        - {x: -45, y: 15}
+        - {x: -45, y: 18}
+        - {x: -47, y: 20}
+        - {x: -49, y: 20}
+      - - {x: -51, y: 22}
+        - {x: -48, y: 23}
+        - {x: -48, y: 26}
+        - {x: -51, y: 27}
+        - {x: -53, y: 25}
+    - name: ARMA_animation_stand_run_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41, y: 34}
+        - {x: -63, y: 26}
+        - {x: -63, y: -21}
+        - {x: -28, y: -55}
+        - {x: 64, y: -55}
+        - {x: 64, y: 5}
+        - {x: 23, y: 34}
+      - - {x: -47, y: 27}
+        - {x: -44, y: 24}
+        - {x: -41, y: 25}
+        - {x: -41, y: 27}
+        - {x: -44, y: 30}
+        - {x: -46, y: 30}
+    - name: ARMA_animation_stand_run_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -55, y: 26}
+        - {x: -59, y: 18}
+        - {x: -59, y: -51}
+        - {x: -39, y: -64}
+        - {x: 51, y: -64}
+        - {x: 62, y: -63}
+        - {x: 64, y: -54}
+        - {x: 64, y: 11}
+        - {x: 32, y: 26}
+      - - {x: -51, y: 14}
+        - {x: -49, y: 12}
+        - {x: -46, y: 13}
+        - {x: -46, y: 16}
+        - {x: -48, y: 18}
+        - {x: -51, y: 17}
+      - - {x: -51, y: 20}
+        - {x: -48, y: 21}
+        - {x: -48, y: 24}
+        - {x: -51, y: 25}
+        - {x: -53, y: 23}
+    - name: ARMA_animation_stand_run_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 35, y: 4}
+        - {x: 20, y: 18}
+        - {x: -51, y: 18}
+        - {x: -55, y: 16}
+        - {x: -55, y: -55}
+        - {x: -43, y: -64}
+        - {x: 51, y: -64}
+        - {x: 64, y: -58}
+        - {x: 64, y: -19}
+        - {x: 62, y: -16}
+        - {x: 58, y: -9}
+        - {x: 49, y: -11}
+      - - {x: -56, y: 6}
+        - {x: -53, y: 7}
+        - {x: -53, y: 10}
+        - {x: -56, y: 11}
+        - {x: -58, y: 9}
+    - name: ARMA_animation_stand_run_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 48, y: -21}
+        - {x: 44, y: -14}
+        - {x: 6, y: 26}
+        - {x: 0, y: 27}
+        - {x: -44, y: 27}
+        - {x: -59, y: -3}
+        - {x: -59, y: -24}
+        - {x: -55, y: -28}
+        - {x: -48, y: -26}
+        - {x: -11, y: -64}
+        - {x: 29, y: -64}
+        - {x: 64, y: -55}
+        - {x: 64, y: -2}
+        - {x: 55, y: -1}
+      - - {x: -51, y: 15}
+        - {x: -49, y: 13}
+        - {x: -46, y: 14}
+        - {x: -46, y: 17}
+        - {x: -48, y: 19}
+        - {x: -51, y: 18}
+      - - {x: -51, y: 21}
+        - {x: -48, y: 22}
+        - {x: -48, y: 25}
+        - {x: -51, y: 26}
+        - {x: -53, y: 24}
+    - name: ARMA_animation_stand_run_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36, y: 36}
+        - {x: -63, y: 9}
+        - {x: -63, y: -41}
+        - {x: -19, y: -52}
+        - {x: 64, y: -52}
+        - {x: 64, y: 14}
+        - {x: 22, y: 36}
+      - - {x: -47, y: 29}
+        - {x: -44, y: 26}
+        - {x: -41, y: 27}
+        - {x: -41, y: 29}
+        - {x: -44, y: 32}
+        - {x: -46, y: 32}
+    - name: ARMA_animation_stand_run_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 57, y: -2}
+        - {x: 53, y: -6}
+        - {x: 5, y: 22}
+        - {x: -12, y: 27}
+        - {x: -44, y: 27}
+        - {x: -59, y: -3}
+        - {x: -59, y: -24}
+        - {x: -55, y: -28}
+        - {x: -48, y: -26}
+        - {x: -17, y: -41}
+        - {x: -13, y: -62}
+        - {x: -7, y: -64}
+        - {x: 35, y: -64}
+        - {x: 54, y: -55}
+        - {x: 64, y: -41}
+        - {x: 64, y: -5}
+      - - {x: -51, y: 15}
+        - {x: -49, y: 13}
+        - {x: -46, y: 14}
+        - {x: -46, y: 17}
+        - {x: -48, y: 19}
+        - {x: -51, y: 18}
+      - - {x: -51, y: 21}
+        - {x: -48, y: 22}
+        - {x: -48, y: 25}
+        - {x: -51, y: 26}
+        - {x: -53, y: 24}
+    - name: ARMA_animation_stand_run_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28, y: 18}
+        - {x: -55, y: 18}
+        - {x: -55, y: -54}
+        - {x: -16, y: -64}
+        - {x: 64, y: -64}
+        - {x: 64, y: -3}
+        - {x: 45, y: 8}
+      - - {x: -56, y: 6}
+        - {x: -53, y: 7}
+        - {x: -53, y: 10}
+        - {x: -56, y: 11}
+        - {x: -58, y: 9}
+    - name: ARMA_animation_stand_run_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: 26}
+        - {x: -51, y: 26}
+        - {x: -59, y: 5}
+        - {x: -59, y: -32}
+        - {x: -9, y: -64}
+        - {x: 51, y: -64}
+        - {x: 57, y: -63}
+        - {x: 64, y: -52}
+        - {x: 64, y: -2}
+        - {x: 63, y: 1}
+      - - {x: -51, y: 14}
+        - {x: -49, y: 12}
+        - {x: -46, y: 13}
+        - {x: -46, y: 16}
+        - {x: -48, y: 18}
+        - {x: -51, y: 17}
+      - - {x: -51, y: 20}
+        - {x: -48, y: 21}
+        - {x: -48, y: 24}
+        - {x: -51, y: 25}
+        - {x: -53, y: 23}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

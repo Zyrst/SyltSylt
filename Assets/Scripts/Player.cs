@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         move = GetComponent<PlayerMovement>();
-        move.Init(1, GetComponent<Rigidbody2D>());
+        move.Init(1, GetComponent<Rigidbody2D>()); //Behövs annat sätt
 	}
 	
 	// Update is called once per frame
