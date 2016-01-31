@@ -16,17 +16,16 @@ public class DeathMatch : GameMode {
 
     public void Init(int winCond, int players)
     {
+        Instantiate(maps[Random.Range(0, maps.Length)]);
         WinCondition = winCond;
         PlayerCount = players;
         Scores = new int[PlayerCount];
         for(int i = 0; i < PlayerCount; i++)
         {
             Scores[i] = 0;
-            GameObject go = Instantiate(Game.Instance._player);
-            go.GetComponent<Player>().Create(i + 1);
         }
 
-        Instantiate(maps[Random.Range(0, maps.Length)]);
+        
     }
 
     public void AddScore(int player, int amount)
