@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Game : MonoBehaviour {
 
-    public GameObject _spawnHandler;
     public GameObject _player;
     public GameObject[] _gameModes;
     public int PlayerCount = 0;
