@@ -61,18 +61,13 @@ public class TeleporterScript : MonoBehaviour {
      void OnCollisionEnter2D (Collision2D collisionObject) {
         if (collisionObject.gameObject.tag == "Player")
         {
-            mPair.Add(new Pair(collisionObject.gameObject, mMaxTimer));
-
-            collisionObject.gameObject.SetActive(false);
-            Vector2 tempPos = new Vector2(-100000.0f, -10000.0f);
-            collisionObject.gameObject.transform.position = tempPos;
-
-            /*if(collisionObject.GETSTRUCT DOWN == true)
+            if(Input.GetAxis("Vertical" + collisionObject.gameObject.GetComponent<Player>().joyNum) < 0)
             {
-                collisionObject.setActive = false;
-                collisionObject.transform.position = mPair.transform.position;
-                collisionObject.GETSTRUCT DOWN = false;
-            }*/
+                mPair.Add(new Pair(collisionObject.gameObject, mMaxTimer));
+                collisionObject.gameObject.SetActive(false);
+                Vector2 tempPos = new Vector2(-100000.0f, -10000.0f);
+                collisionObject.gameObject.transform.position = tempPos;
+            }
         }
      }
 }
