@@ -18,7 +18,8 @@ public class AudioManager : MonoBehaviour {
 		PickupGranadeLauncher,
 		PickupLazer,
 		PickupMine,
-		TakeDamage
+		TakeDamage,
+		Announcer
 	}	
 
 	[System.Serializable]
