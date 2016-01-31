@@ -37,6 +37,8 @@ public class TeleporterScript : MonoBehaviour {
     public GameObject mExit;
     //public GameObject[] mWatchingPlayers;
     public float mMaxTimer;
+    public float cooldownTimer = 0.0f;
+    public float maxCooldown = 2.0f;
 
     List<Pair> mPair = new List<Pair>();
     List<GameObject> mWatchingPlayers = new List<GameObject>();
@@ -44,7 +46,7 @@ public class TeleporterScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        mMaxTimer = 0.5f;
+        mMaxTimer = 0.0f;
 
 
 	}
@@ -52,14 +54,27 @@ public class TeleporterScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if(cooldownTimer > 0)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
+
         for (int i = 0; i < mWatchingPlayers.Count;i++ )
         {
-            if (Input.GetAxis("Vertical" + mWatchingPlayers[i].gameObject.GetComponent<Player>().joyNum) < 0)
+            if (cooldownTimer <= 0)
             {
-                mPair.Add(new Pair(mWatchingPlayers[i].gameObject, mMaxTimer));
-                Vector2 tempPos = new Vector2(-100000.0f, -10000.0f);
-                mWatchingPlayers[i].gameObject.transform.position = tempPos;
+                if (Input.GetAxis("Vertical" + mWatchingPlayers[i].gameObject.GetComponent<Player>().joyNum) < 0)
+                {
+
+                    cooldownTimer = maxCooldown;
+                    mExit.GetComponent<TeleporterScript>().cooldownTimer = maxCooldown;
+                    mPair.Add(new Pair(mWatchingPlayers[i].gameObject, mMaxTimer));
+                    //Vector2 tempPos = new Vector2(100.0f, 100.0f);
+                    //mWatchingPlayers[i].gameObject.transform.position = tempPos;
+                }
             }
+
+
         }
 
 

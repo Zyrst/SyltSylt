@@ -33,4 +33,9 @@ public class SpawnHandlerScript : MonoBehaviour {
         _oldRandom = _newRandom;
         _spawnPoints[_newRandom].GetComponent<SpawnPointScript>().Spawn(_player);
     }
+
+    public void FixingTHingsFuck()
+    {
+        _spawnPoints.Clear();
+    }
 }

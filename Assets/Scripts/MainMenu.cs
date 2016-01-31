@@ -7,10 +7,11 @@ public class MainMenu : MonoBehaviour {
     public GameObject[] texts;
     public GameObject play;
     public GameObject dank;
+    public AudioClip music;
     private int count = 0;
 	// Use this for initialization
 	void Start () {
-	
+       AudioManager.instance.PlayMusic(music, true);
 	}
 	
 	// Update is called once per frame
@@ -56,7 +57,7 @@ public class MainMenu : MonoBehaviour {
     public void ActiveMatch()
     {
         Game.Instance.StartMatch(count);
-        gameObject.SetActive(false);
+        Destroy(this.gameObject);
     }
 
     public void Dank()

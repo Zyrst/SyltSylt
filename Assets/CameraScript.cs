@@ -117,45 +117,45 @@ public class CameraScript : MonoBehaviour {
             }
         }
 
-        if(maxX > mMaxSize * (Screen.width/Screen.height))
-        {
-            maxX = mMaxSize * (Screen.width / Screen.height);
-        }
+        //if(maxX > mMaxSize * (Screen.width/Screen.height))
+        //{
+        //    maxX = mMaxSize * (Screen.width / Screen.height);
+        //}
 
-        if (maxX < -mMaxSize * (Screen.width / Screen.height))
-        {
-            maxX = -mMaxSize * (Screen.width / Screen.height);
-        }
+        //if (maxX < -mMaxSize * (Screen.width / Screen.height))
+        //{
+        //    maxX = -mMaxSize * (Screen.width / Screen.height);
+        //}
 
-        if (minX > mMaxSize * (Screen.width / Screen.height))
-        {
-            minX = mMaxSize * (Screen.width / Screen.height);
-        }
+        //if (minX > mMaxSize * (Screen.width / Screen.height))
+        //{
+        //    minX = mMaxSize * (Screen.width / Screen.height);
+        //}
 
-        if (minX < -mMaxSize * (Screen.width / Screen.height))
-        {
-            minX = -mMaxSize * (Screen.width / Screen.height);
-        }
+        //if (minX < -mMaxSize * (Screen.width / Screen.height))
+        //{
+        //    minX = -mMaxSize * (Screen.width / Screen.height);
+        //}
 
-        if(maxY > mMaxSize)
-        {
-            maxY = mMaxSize;
-        }
+        //if(maxY > mMaxSize)
+        //{
+        //    maxY = mMaxSize;
+        //}
 
-        if(maxY < -mMaxSize)
-        {
-            maxY = -mMaxSize;
-        }
+        //if(maxY < -mMaxSize)
+        //{
+        //    maxY = -mMaxSize;
+        //}
 
-        if(minY > mMaxSize)
-        {
-            minY = mMaxSize;
-        }
+        //if(minY > mMaxSize)
+        //{
+        //    minY = mMaxSize;
+        //}
 
-        if(minY < -mMaxSize)
-        {
-            minY = -mMaxSize;
-        }
+        //if(minY < -mMaxSize)
+        //{
+        //    minY = -mMaxSize;
+        //}
 
 
 
@@ -195,7 +195,7 @@ public class CameraScript : MonoBehaviour {
         //}
 
 
-        transform.position = Vector3.Lerp(transform.position, new Vector3(averageX, averageY, transform.position.z), 0.5f);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(averageX, averageY, transform.position.z), 0.1f);
         GetComponent<Camera>().orthographicSize = Mathf.Clamp(Mathf.Max(dx, dy),mMinSize, mMaxSize);
     }
 }

@@ -28,7 +28,8 @@ public class Player : MonoBehaviour {
 
     public void TakeDamage(GameObject killer)
     {
-		AudioManager.instance.PlaySound(AudioManager.Tag.Announcer);
+        Camera.main.GetComponent<CameraScript>().AddCameraShake(0.3f, 0.3f);
+        AudioManager.instance.PlaySound(AudioManager.Tag.Announcer);
 		AudioManager.instance.PlaySound(AudioManager.Tag.TakeDamage);
         AudioManager.instance.PlaySound(AudioManager.Tag.Dies);
         Debug.Log(killer);

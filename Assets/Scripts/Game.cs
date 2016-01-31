@@ -7,6 +7,7 @@ public class Game : MonoBehaviour {
     public GameObject _player;
     public GameObject[] _gameModes;
     public int PlayerCount = 0;
+    public GameObject MainMenu; 
     private static Game _instance = null;
 
     public List<GameObject> _players = new List<GameObject>();

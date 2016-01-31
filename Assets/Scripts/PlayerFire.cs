@@ -51,5 +51,6 @@ public class PlayerFire : MonoBehaviour {
 		if (weapon != null)
 			GameObject.Destroy(weapon.gameObject);
 		weapon = newWeapon;
+        weapon.GetComponent<Weapon>().owner = transform.gameObject;
 	}
 }

@@ -13,6 +13,8 @@ public class LaserProjectile : Projectile {
 
 	bool ded = false;
 
+    public int bounce = 3; 
+
 	void Start () {
 		lineRenderer = GetComponent<LineRenderer>();
 	}
@@ -45,7 +47,7 @@ public class LaserProjectile : Projectile {
 					ded = true;
 					shake = true;
 				}
-				else if (!bounced) {
+				else if (!bounced && bounce > 0) {
 					//V-=2*Normal_wall*(Normal_wall.V) 
 					// Vect1 - 2 * WallN * (WallN DOT Vect1)
 
@@ -56,6 +58,8 @@ public class LaserProjectile : Projectile {
 					clone.GetComponent<LaserProjectile>().speed = reflect; 
 					clone.GetComponent<LaserProjectile>().bounceObject = rayHit.collider.gameObject;
 					clone.GetComponent<LaserProjectile>().owner = owner;
+                    bounce--;
+                    clone.GetComponent<LaserProjectile>().bounce = bounce;
 				}
 			}
 		}

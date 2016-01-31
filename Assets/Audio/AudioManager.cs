@@ -35,6 +35,8 @@ public class AudioManager : MonoBehaviour {
 
 	private Dictionary<Tag, List<AudioClip>> dict = new Dictionary<Tag, List<AudioClip>>();
 
+    
+
 	void Start () {
 		instance = this;
 		instance.init();
@@ -64,4 +66,18 @@ public class AudioManager : MonoBehaviour {
 		prefab.GetComponent<AudioSource>().clip = dict[tag][Random.Range(0, dict[tag].Count - 1)];
 		prefab.GetComponent<AudioSource>().Play();
 	}
+
+    GameObject asd;
+
+    public AudioSource PlayMusic(AudioClip clipzter, bool loop)
+    {
+        if (asd != null)
+            GameObject.Destroy(asd);
+
+        asd = Instantiate(audioSourcePrefab);
+        asd.GetComponent<AudioSource>().clip = clipzter;
+        asd.GetComponent<AudioSource>().loop = loop;
+        asd.GetComponent<AudioSource>().Play();
+        return asd.GetComponent<AudioSource>();
+    }
 }

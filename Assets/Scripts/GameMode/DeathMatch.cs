@@ -11,9 +11,12 @@ public class DeathMatch : GameMode {
     public GameObject Fade;
     GameObject currentMap;
     private bool winner = false;
+
+    private AudioSource srz;
+    public AudioClip[] musics;
 	// Use this for initialization
 	void Start () {
-	
+        srz = AudioManager.instance.PlayMusic(musics[0], false);
 	}
 	
 	// Update is called once per frame
@@ -26,6 +29,11 @@ public class DeathMatch : GameMode {
         if(Input.GetButton("Enter" + 1) && winner)
         {
             Done();
+        }
+
+        if(!srz.isPlaying)
+        {
+            srz = AudioManager.instance.PlayMusic(musics[1], true);
         }
 	}
 
@@ -55,12 +63,14 @@ public class DeathMatch : GameMode {
             //deklarera vinnare
             winner = true;
             Fade.SetActive(true);
+            srz = AudioManager.instance.PlayMusic(musics[2], false);
             Fade.GetComponentsInChildren<Text>().FirstOrDefault(x => x.name == "Winner").text = "Player " + player.ToString() + " Wins!";
         }
     }
 
     public void Done()
     {
+        Instantiate(Game.Instance.MainMenu);
         foreach (GameObject go in Game.Instance._players)
         {
             Destroy(go);
@@ -69,7 +79,8 @@ public class DeathMatch : GameMode {
         Game.Instance._players.Clear();
 
         Destroy(currentMap);
-        GameObject.Find("MainMenu").SetActive(true);
+        Game.Instance.GetComponent<SpawnHandlerScript>().FixingTHingsFuck();
+        
         Destroy(this.gameObject);
     }
 }
