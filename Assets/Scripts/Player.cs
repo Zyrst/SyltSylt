@@ -13,7 +13,10 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+	    if(transform.position.y <= -150)
+        {
+            Game.Instance.GetComponent<SpawnHandlerScript>().Spawn(this.gameObject);
+        }
 	}
 
     public void Create(int _joyNum)
@@ -27,7 +30,16 @@ public class Player : MonoBehaviour {
     {
 		AudioManager.instance.PlaySound(AudioManager.Tag.TakeDamage);
         AudioManager.instance.PlaySound(AudioManager.Tag.Dies);
-        GameObject.Find("DeathMatch").GetComponent<DeathMatch>().AddScore(killer.GetComponent<Player>().joyNum, 1);
+        Debug.Log(killer);
+        GameObject go = GameObject.Find("DeathMatch(Clone)");
+        if(go != null)
+        {
+            Debug.Log("Not null");
+            go.GetComponent<DeathMatch>().AddScore(killer.GetComponent<Player>().joyNum, 1);
+            Game.Instance.GetComponent<SpawnHandlerScript>().Spawn(this.gameObject);
+        }
+
+        //GameObject.Find("DeathMatch").GetComponent<DeathMatch>().AddScore(killer.GetComponent<Player>().joyNum, 1);
     }
 
 }
