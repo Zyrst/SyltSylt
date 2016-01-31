@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 public class SpawnHandlerScript : MonoBehaviour {
 
-     private List<GameObject> _spawnPoints = new List<GameObject>();
+    private List<GameObject> _spawnPoints = new List<GameObject>();
+
+    private int _newRandom, _oldRandom;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +25,12 @@ public class SpawnHandlerScript : MonoBehaviour {
 
     public void Spawn(GameObject _player)
     {
-        _spawnPoints[Random.Range(0, _spawnPoints.Count)].GetComponent<SpawnPointScript>().Spawn(_player);
+        while (_newRandom == _oldRandom)
+        {
+            _newRandom = Random.Range(0, _spawnPoints.Count);
+        }
+
+        _oldRandom = _newRandom;
+        _spawnPoints[_newRandom].GetComponent<SpawnPointScript>().Spawn(_player);
     }
 }

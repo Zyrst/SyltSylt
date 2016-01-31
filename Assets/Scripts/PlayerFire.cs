@@ -20,8 +20,6 @@ public class PlayerFire : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (weapon != null) {
-			
-
 			if (Input.GetButton("Fire" + joyNum)) {
 	            weapon.GetComponent<Weapon>().holdFire();
 	        }
@@ -47,5 +45,11 @@ public class PlayerFire : MonoBehaviour {
 	public void setFlip(bool flip) {
 		if (weapon != null)
 			weapon.GetComponent<Weapon>().flip = flip;
+	}
+
+	public void changeWeapon(GameObject newWeapon) {
+		if (weapon != null)
+			GameObject.Destroy(weapon.gameObject);
+		weapon = newWeapon;
 	}
 }
