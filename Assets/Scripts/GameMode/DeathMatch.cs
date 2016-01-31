@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class DeathMatch : GameMode {
 
     public GameObject[] maps;
+    public Text[] scores;
 	// Use this for initialization
 	void Start () {
 	
@@ -11,22 +13,25 @@ public class DeathMatch : GameMode {
 	
 	// Update is called once per frame
 	void Update () {
-	
+	   for(int i = 0; i < scores.Length; i++)
+       {
+           scores[i].text = Scores[i].ToString();
+       }
 	}
 
     public void Init(int winCond, int players)
     {
+        Instantiate(maps[Random.Range(0, maps.Length)]);
         WinCondition = winCond;
         PlayerCount = players;
         Scores = new int[PlayerCount];
         for(int i = 0; i < PlayerCount; i++)
         {
             Scores[i] = 0;
-            GameObject go = Instantiate(Game.Instance._player);
-            go.GetComponent<Player>().Create(i + 1);
+            scores[i].gameObject.SetActive(true);
         }
 
-        Instantiate(maps[Random.Range(0, maps.Length)]);
+        
     }
 
     public void AddScore(int player, int amount)

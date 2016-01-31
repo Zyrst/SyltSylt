@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		GetComponent<PlayerFire>().setFlip(faceLeft);
+
         float sumX = 0;
         //mJumped = false;
         if (Input.GetButton("Horizontal" + joyNum) || Input.GetAxis("Horizontal" + joyNum) < 0 || Input.GetAxis("Horizontal" + joyNum) > 0)

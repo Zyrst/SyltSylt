@@ -5,13 +5,15 @@ public class SMG : Weapon {
 
 	public float delay = 0.05f;
 
-	float shootTimer = 0;
+	protected float shootTimer = 0;
+
+	public int ammo = 20;
 
 	void Start () {
 		
 	}
 	
-	void Update () {
+	protected override void UpdateInherit () {
 		if (shootTimer > 0)
 			shootTimer -= Time.deltaTime;
 	}
@@ -29,9 +31,14 @@ public class SMG : Weapon {
 		g.GetComponent<BulletScript>().lifeTime = 5;
 
 		shootTimer = delay;
+		ammo--;
 	}
 
 	public override void releaseFire() {
 
+	}
+
+	public override int getAmmoLeft() {
+		return ammo;
 	}
 }
