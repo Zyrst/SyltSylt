@@ -25,7 +25,10 @@ public class Game : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-       
+       PlayerCount = 1;
+       GameObject player = Instantiate(_player);
+       player.GetComponent<Player>().Create(1);
+
 	}
 	
 	// Update is called once per frame

@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour {
 	void Update () {
         float sumX = 0;
         //mJumped = false;
-        if (Input.GetButton("Horizontal" + joyNum))
+        if (Input.GetButton("Horizontal" + joyNum) || Input.GetAxis("Horizontal" + joyNum) < 0 || Input.GetAxis("Horizontal" + joyNum) > 0)
         {
             sumX += Input.GetAxisRaw("Horizontal" + joyNum);
             float scale = Mathf.Clamp(sumX, -1, 1);
@@ -37,6 +37,16 @@ public class PlayerMovement : MonoBehaviour {
                 Vector3 theScale = transform.localScale;
                 theScale.x *= -1;
                 transform.localScale = theScale;
+            }
+
+            //If forces are applied nullify if we try walking other way
+            if(sumX > 0 && mBody.velocity.x < 0)
+            {
+                mBody.velocity = new Vector2(0, mBody.velocity.y);
+            }
+            else if (sumX < 0 && mBody.velocity.x > 0)
+            {
+                mBody.velocity = new Vector2(0, mBody.velocity.y);
             }
         }
        
