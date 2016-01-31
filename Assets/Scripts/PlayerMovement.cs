@@ -54,6 +54,8 @@ public class PlayerMovement : MonoBehaviour {
         {
             mBody.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
             GetComponent<Animator>().SetTrigger("Jump");
+
+            AudioManager.instance.PlaySound(AudioManager.Tag.Jump);
         }
         sumX *= (Speed * Time.deltaTime);
         transform.position += new Vector3(sumX, 0);

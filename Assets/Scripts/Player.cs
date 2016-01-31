@@ -25,6 +25,8 @@ public class Player : MonoBehaviour {
 
     public void TakeDamage(GameObject killer)
     {
+		AudioManager.instance.PlaySound(AudioManager.Tag.TakeDamage);
+        AudioManager.instance.PlaySound(AudioManager.Tag.Dies);
         GameObject.Find("DeathMatch").GetComponent<DeathMatch>().AddScore(killer.GetComponent<Player>().joyNum, 1);
     }
 
