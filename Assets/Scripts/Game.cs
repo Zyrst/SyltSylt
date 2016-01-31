@@ -29,8 +29,7 @@ public class Game : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-       // SpawnNewPlayers(3);
+        
 	}
 	
 	// Update is called once per frame
@@ -45,17 +44,18 @@ public class Game : MonoBehaviour {
         Debug.Log(playerCount);
         GameObject go = GameObject.Instantiate(_gameModes[0]);
         go.GetComponent<DeathMatch>().Init(5, PlayerCount);
+        SpawnNewPlayers(PlayerCount);
     }
+
     public void SpawnNewPlayers(int numberOfPlayers_)
     {
         for (int i = 0; i < numberOfPlayers_; i++)
         {
-            PlayerCount++;
             GameObject player = Instantiate(_player);
-            player.GetComponent<Player>().Create(PlayerCount);
+            player.GetComponent<Player>().Create(i + 1);
             _players.Add(player);
 
-            GetComponent<SpawnHandlerScript>().Spawn(_players[PlayerCount - 1]);
+            GetComponent<SpawnHandlerScript>().Spawn(_players[i]);
         }
     }
 }
