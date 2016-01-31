@@ -5,6 +5,7 @@ public class Game : MonoBehaviour {
 
     public GameObject _spawnHandler;
     public GameObject _player;
+    public GameObject[] _gameModes;
     public int PlayerCount = 0;
     private static Game _instance = null;
 
@@ -26,9 +27,7 @@ public class Game : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-       PlayerCount = 1;
-       GameObject player = Instantiate(_player);
-       player.GetComponent<Player>().Create(1);
+      
 
 	}
 	
@@ -36,4 +35,12 @@ public class Game : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void StartMatch(int playerCount)
+    {
+        PlayerCount = playerCount;
+        Debug.Log(playerCount);
+        GameObject go = GameObject.Instantiate(_gameModes[0]);
+        go.GetComponent<DeathMatch>().Init(5, PlayerCount);
+    }
 }

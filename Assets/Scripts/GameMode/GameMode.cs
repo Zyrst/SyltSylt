@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class GameMode : MonoBehaviour {
-    public int Rounds;
+    public int WinCondition;
     public int PlayerCount;
     public int[] Scores;
 
