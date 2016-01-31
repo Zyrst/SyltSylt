@@ -11,7 +11,7 @@ public class LaserWeapon : Weapon {
 	}
 	
 
-	void Update () {
+	protected override void UpdateInherit () {
 		if (shootTimer > 0)
 			shootTimer -= Time.deltaTime;
 	}

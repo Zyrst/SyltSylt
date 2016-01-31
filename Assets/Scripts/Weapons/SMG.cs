@@ -5,13 +5,13 @@ public class SMG : Weapon {
 
 	public float delay = 0.05f;
 
-	float shootTimer = 0;
+	protected float shootTimer = 0;
 
 	void Start () {
 		
 	}
 	
-	void Update () {
+	protected override void UpdateInherit () {
 		if (shootTimer > 0)
 			shootTimer -= Time.deltaTime;
 	}
