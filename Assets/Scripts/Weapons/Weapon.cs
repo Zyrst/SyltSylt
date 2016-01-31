@@ -28,4 +28,6 @@ public abstract class Weapon : MonoBehaviour {
 	protected abstract void UpdateInherit();
     public abstract void holdFire();
     public abstract void releaseFire();
+
+    public abstract int getAmmoLeft();
 }

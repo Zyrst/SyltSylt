@@ -7,6 +7,8 @@ public class SMG : Weapon {
 
 	protected float shootTimer = 0;
 
+	public int ammo = 20;
+
 	void Start () {
 		
 	}
@@ -29,9 +31,14 @@ public class SMG : Weapon {
 		g.GetComponent<BulletScript>().lifeTime = 5;
 
 		shootTimer = delay;
+		ammo--;
 	}
 
 	public override void releaseFire() {
 
+	}
+
+	public override int getAmmoLeft() {
+		return ammo;
 	}
 }

@@ -1,42 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LaserWeapon : Weapon {
+public class MineWeapon : Weapon {
 
 	public float delay = 0.05f;
 	float shootTimer = 0;
 
-	public int ammo = 10;
+	public int ammo = 4;
 
 	void Start () {
 	}
-	
 
-	protected override void UpdateInherit () {
-		if (shootTimer > 0)
-			shootTimer -= Time.deltaTime;
+	protected override void UpdateInherit() {
+		float padd = 1.1f;
+		transform.position += new Vector3(direction.x * padd, direction.y * padd, 0);
+
+		shootTimer -= Time.deltaTime;
 	}
-
-
 	public override void holdFire() {
+    }
+	public override void releaseFire() {
 		if (shootTimer > 0)
 			return;
 
 		GameObject g = Instantiate(projectilePrototype);
-		g.transform.position = transform.position + (new Vector3(direction.x, direction.y, 0) * 2f);
+		g.transform.position = transform.position;
 		g.GetComponent<Projectile>().speed = direction;
 		g.GetComponent<Projectile>().owner = owner;
-		g.GetComponent<LaserProjectile>().bounceObject = owner;
 
-		AudioManager.instance.PlaySound(AudioManager.Tag.LazerShot);
+		AudioManager.instance.PlaySound(AudioManager.Tag.MinePlace);
 
 		shootTimer = delay;
 		ammo--;
-	}
-
-	public override void releaseFire() {
-		
-	}
+    }
 
 	public override int getAmmoLeft() {
 		return ammo;
