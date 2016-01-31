@@ -28,6 +28,7 @@ public class DeathMatch : GameMode {
         for(int i = 0; i < PlayerCount; i++)
         {
             Scores[i] = 0;
+            scores[i].gameObject.SetActive(true);
         }
 
         
