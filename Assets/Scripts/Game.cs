@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Game : MonoBehaviour {
 
-    public GameObject _spawnHandler;
     public GameObject _player;
     public int PlayerCount = 0;
     private static Game _instance = null;
@@ -30,9 +29,6 @@ public class Game : MonoBehaviour {
        GameObject player = Instantiate(_player);
        player.GetComponent<Player>().Create(1);
 
-       PlayerCount = 2;
-       GameObject player2 = Instantiate(_player);
-       player2.GetComponent<Player>().Create(2);
 	}
 	
 	// Update is called once per frame
