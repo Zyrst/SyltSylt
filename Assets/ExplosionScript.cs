@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BösScript : MonoBehaviour {
+public class ExplosionScript : MonoBehaviour {
+
+	public float timer = 1;
 
 	// Use this for initialization
 	void Start () {
-		Game.Instance.StartMatch(2);
+	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		timer -= Time.deltaTime;
+		if (timer <= 0)
+			GameObject.Destroy(transform.gameObject);
 	
 	}
 }

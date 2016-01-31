@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		GetComponent<PlayerFire>().weapon.GetComponent<Weapon>().flip = faceLeft;
+		GetComponent<PlayerFire>().setFlip(faceLeft);
 
         float sumX = 0;
         //mJumped = false;
