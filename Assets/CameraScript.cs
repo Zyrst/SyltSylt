@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraScript : MonoBehaviour {
 
     public GameObject[] mPlayer;
-    public float mMaxStrength, mTimer, mMaxTimer, mStrength;
+    public float mMaxStrength = 1.0f, mTimer = 0.0f, mMaxTimer, mStrength;
     public Vector3 origPos;
     public float mMaxSize, mMinSize;
     public float maxBorderWidth;
@@ -20,13 +20,13 @@ public class CameraScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
         GetComponent<ChromaticAberrationEffect>().intensity = 0;
         CheckPlayers();
         //ResetPos();
         BorderCheck();
-        if (mTimer >= 0.0f)
+        if (mTimer > 0.0f)
         {
             Shake();
             mTimer -= Time.deltaTime;
@@ -94,18 +94,10 @@ public class CameraScript : MonoBehaviour {
 
     void BorderCheck()
     {
-        //mMaxSize = GetComponent<Camera>().orthographicSize;
-        //mMinSize = mMaxSize / 2.0f;
-        //maxBorderWidth = 3.0f;
-
-
-        //Find averagePos between all players.
         float averageX = 0.0f;
         float averageY = 0.0f;
         float maxX = -100.0f, minX = 100.0f, maxY = -100.0f, minY = 100.0f;
 
-        //int i = 0;
-        //GameObject tempObject = mPlayer[i];
         for (int i = 0; i < mPlayer.Length; i++)
         {
             Vector3 playerPos = mPlayer[i].transform.position;
@@ -124,90 +116,86 @@ public class CameraScript : MonoBehaviour {
                 minY = playerPos.y;
             }
         }
-        /*
-        while (tempObject != null)
+
+        if(maxX > mMaxSize * (Screen.width/Screen.height))
         {
-            tempObject = mPlayer[i];
-            Vector3 playerPos = mPlayer[i].transform.position;
-
-
-            if (playerPos.x > maxX)
-            {
-                maxX = playerPos.x;
-            } if (playerPos.x < minX)
-            {
-                minX = playerPos.x;
-            } if (playerPos.y > maxY)
-            {
-                maxY = playerPos.y;
-            } if (playerPos.y < minY)
-            {
-                minY = playerPos.y;
-            }
-
-            i++;
-
-        }*/
-
-        //Confine average value
-        /*if(averageY < -mMinSize)
-        {
-            averageY = -mMinSize;
-        }else if(averageY > mMinSize)
-        {
-            averageY = mMinSize;
+            maxX = mMaxSize * (Screen.width / Screen.height);
         }
 
-        if(averageX < -mMinSize*(Screen.width/Screen.height))
+        if (maxX < -mMaxSize * (Screen.width / Screen.height))
         {
-            averageX = -mMinSize * (Screen.width / Screen.height);
-        }else if(averageX > mMinSize*(Screen.width/Screen.height))
-        {
-            averageX = mMinSize * (Screen.width / Screen.height);
-        }*/
-
-        /*float diffSize = maxY - minY;
-        if((maxX - minX)*Screen.height/Screen.width > diffSize)
-        {
-            diffSize = (maxX - minX) * Screen.height / Screen.width;
+            maxX = -mMaxSize * (Screen.width / Screen.height);
         }
 
-        if(diffSize > mMaxSize)
+        if (minX > mMaxSize * (Screen.width / Screen.height))
         {
-            diffSize = mMaxSize;
+            minX = mMaxSize * (Screen.width / Screen.height);
         }
 
-        else if(diffSize < mMinSize)
+        if (minX < -mMaxSize * (Screen.width / Screen.height))
         {
-            diffSize = mMinSize;
-        }*/
+            minX = -mMaxSize * (Screen.width / Screen.height);
+        }
+
+        if(maxY > mMaxSize)
+        {
+            maxY = mMaxSize;
+        }
+
+        if(maxY < -mMaxSize)
+        {
+            maxY = -mMaxSize;
+        }
+
+        if(minY > mMaxSize)
+        {
+            minY = mMaxSize;
+        }
+
+        if(minY < -mMaxSize)
+        {
+            minY = -mMaxSize;
+        }
+
+
 
         averageX = (maxX + minX) / 2.0f;
         averageY = (maxY + minY) / 2.0f;
 
-
-
-        transform.position = Vector3.Lerp(transform.position, new Vector3(averageX, averageY, transform.position.z), 0.2f);
-
         float dx = (maxX - minX) * Screen.height / Screen.width;
         float dy = maxY - minY;
 
+        //if (dx > mMaxSize * (Screen.width / Screen.height))
+        //{
+        //    dx = mMaxSize * (Screen.width / Screen.height);
+        //}
+        //if(dy > mMaxSize)
+        //{
+        //    dy = mMaxSize;
+        //}
 
+        //if (averageX + dx > mMaxSize * (Screen.width / Screen.height)/2)
+        //{
+        //    averageX = (mMaxSize * (Screen.width / Screen.height) / 2) - dx;
+        //}
+
+        //if (averageX - dx < -mMaxSize * (Screen.width / Screen.height) / 2)
+        //{
+        //    averageX = (-mMaxSize * (Screen.width / Screen.height) / 2) + dx;
+        //}
+
+        //if (averageY + dy > mMaxSize / 2)
+        //{
+        //    averageY = (mMaxSize / 2) - dy;
+        //}
+
+        //if (averageY - dy < -mMaxSize/2)
+        //{
+        //    averageY = (-mMaxSize /2)+ dy;
+        //}
+
+
+        transform.position = Vector3.Lerp(transform.position, new Vector3(averageX, averageY, transform.position.z), 0.5f);
         GetComponent<Camera>().orthographicSize = Mathf.Clamp(Mathf.Max(dx, dy),mMinSize, mMaxSize);
-        
-        /*
-        mSize = mMaxSize;
-
-        float maxBorderX = ;
-        float maxBorderY;
-
-        int i = 0;
-        GameObject tempObject = mPlayer[i];
-        while(tempObject != null)
-        {
-            Vector3 newPos = mPlayer[i].transform.position;
-            i++;
-            tempObject = mPlayer[i];
-        }*/
     }
 }
