@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour {
 
     public GameObject[] texts;
     public GameObject play;
+    public GameObject dank;
     private int count = 0;
 	// Use this for initialization
 	void Start () {
@@ -56,5 +57,19 @@ public class MainMenu : MonoBehaviour {
     {
         Game.Instance.StartMatch(count);
         gameObject.SetActive(false);
+    }
+
+    public void Dank()
+    {
+        
+       switch(dank.activeInHierarchy)
+       {
+           case true :
+               dank.SetActive(false);
+               break;
+           case false:
+               dank.SetActive(true);
+               break;
+       }
     }
 }

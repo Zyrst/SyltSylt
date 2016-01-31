@@ -9,7 +9,7 @@ public class Game : MonoBehaviour {
     public int PlayerCount = 0;
     private static Game _instance = null;
 
-    private List<GameObject> _players = new List<GameObject>();
+    public List<GameObject> _players = new List<GameObject>();
 
     public static Game Instance
     {
