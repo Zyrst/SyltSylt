@@ -27,6 +27,8 @@ public class LaserWeapon : Weapon {
 		g.GetComponent<Projectile>().owner = owner;
 		g.GetComponent<LaserProjectile>().bounceObject = owner;
 
+		AudioManager.instance.PlaySound(AudioManager.Tag.LazerShot);
+
 		shootTimer = delay;
 	}
 

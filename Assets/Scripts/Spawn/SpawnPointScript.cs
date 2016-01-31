@@ -15,7 +15,6 @@ public class SpawnPointScript : MonoBehaviour {
 
     public void Spawn(GameObject player_)
     {
-        GameObject player = Instantiate(player_);
-        player.transform.position = transform.position - new Vector3(0, player.GetComponent<Collider2D>().bounds.size.y, 0);
+        player_.transform.position = transform.position + new Vector3(0, player_.GetComponent<Renderer>().bounds.size.y, 0);
     }
 }

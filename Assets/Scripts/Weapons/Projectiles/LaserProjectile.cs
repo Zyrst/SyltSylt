@@ -36,9 +36,9 @@ public class LaserProjectile : Projectile {
 			//lineRenderer.SetPosition(0, transform.position);
 			//lineRenderer.SetPosition(1, rayHit.point);
 
-			Player player = null;
-			if ((player = rayHit.transform.GetComponent<Player>())) {
-				player.TakeDamage(owner);
+			if (rayHit.transform.tag.ToUpper().Equals("PLAYER")) {
+				rayHit.transform.GetComponent<Player>().TakeDamage(owner);
+				Destroy(transform.gameObject);
 			}
 			else if (!bounced) {
 				//V-=2*Normal_wall*(Normal_wall.V) 
