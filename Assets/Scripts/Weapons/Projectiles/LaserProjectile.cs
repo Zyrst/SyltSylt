@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class LaserProjectile : Projectile {
 
 	LineRenderer lineRenderer;
@@ -9,6 +10,8 @@ public class LaserProjectile : Projectile {
 
 	bool bounced = false;
 	public GameObject bounceObject = null;
+
+	bool ded = false;
 
 	void Start () {
 		lineRenderer = GetComponent<LineRenderer>();
@@ -36,23 +39,24 @@ public class LaserProjectile : Projectile {
 			//lineRenderer.SetPosition(0, transform.position);
 			//lineRenderer.SetPosition(1, rayHit.point);
 
-			if (rayHit.transform.tag.ToUpper().Equals("PLAYER")) {
-				rayHit.transform.GetComponent<Player>().TakeDamage(owner);
-				Destroy(transform.gameObject);
-			}
-			else if (!bounced) {
-				//V-=2*Normal_wall*(Normal_wall.V) 
-				// Vect1 - 2 * WallN * (WallN DOT Vect1)
+			if (!ded) {
+				if (rayHit.transform.tag.ToUpper().Equals("PLAYER") && rayHit.transform.gameObject != owner) {
+					rayHit.transform.GetComponent<Player>().TakeDamage(owner);
+					ded = true;
+					shake = true;
+				}
+				else if (!bounced) {
+					//V-=2*Normal_wall*(Normal_wall.V) 
+					// Vect1 - 2 * WallN * (WallN DOT Vect1)
 
-				Vector2 reflect = speed - (2 * rayHit.normal) * (Vector2.Dot(rayHit.normal, speed));
+					Vector2 reflect = speed - (2 * rayHit.normal) * (Vector2.Dot(rayHit.normal, speed));
 
-				GameObject clone = GameObject.Instantiate(transform.gameObject);
-				clone.transform.position = new Vector3(rayHit.point.x + rayHit.normal.x * 0.01f, rayHit.point.y + rayHit.normal.y * 0.01f, 0);
-				clone.GetComponent<LaserProjectile>().speed = reflect; 
-				clone.GetComponent<LaserProjectile>().bounceObject = rayHit.collider.gameObject;
-				clone.GetComponent<LaserProjectile>().owner = owner;
-
-                shake = true;
+					GameObject clone = GameObject.Instantiate(transform.gameObject);
+					clone.transform.position = new Vector3(rayHit.point.x + rayHit.normal.x * 0.01f, rayHit.point.y + rayHit.normal.y * 0.01f, 0);
+					clone.GetComponent<LaserProjectile>().speed = reflect; 
+					clone.GetComponent<LaserProjectile>().bounceObject = rayHit.collider.gameObject;
+					clone.GetComponent<LaserProjectile>().owner = owner;
+				}
 			}
 		}
 		else {
