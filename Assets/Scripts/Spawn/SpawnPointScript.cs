@@ -4,8 +4,8 @@ using System.Collections;
 public class SpawnPointScript : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
-        Game.Instance._spawnHandler.GetComponent<SpawnHandlerScript>().AddSpawnPoint(this.gameObject);
+	void Awake () {
+        Game.Instance.GetComponent<SpawnHandlerScript>().AddSpawnPoint(this.gameObject);
     }
 	
 	// Update is called once per frame
@@ -16,6 +16,6 @@ public class SpawnPointScript : MonoBehaviour {
     public void Spawn(GameObject player_)
     {
         GameObject player = Instantiate(player_);
-        player.transform.position = transform.position;
+        player.transform.position = transform.position - new Vector3(0, player.GetComponent<Collider2D>().bounds.size.y, 0);
     }
 }
