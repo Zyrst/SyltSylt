@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Game : MonoBehaviour {
 
     public GameObject _player;
     public int PlayerCount = 0;
     private static Game _instance = null;
+
+    private List<GameObject> _players = new List<GameObject>();
 
     public static Game Instance
     {
@@ -25,14 +28,24 @@ public class Game : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-       PlayerCount = 1;
-       GameObject player = Instantiate(_player);
-       player.GetComponent<Player>().Create(1);
-
+        SpawnNewPlayers(3);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+
+    public void SpawnNewPlayers(int numberOfPlayers_)
+    {
+        for (int i = 0; i < numberOfPlayers_; i++)
+        {
+            PlayerCount++;
+            GameObject player = Instantiate(_player);
+            player.GetComponent<Player>().Create(PlayerCount);
+            _players.Add(player);
+
+            GetComponent<SpawnHandlerScript>().Spawn(_players[PlayerCount - 1]);
+        }
+    }
 }
