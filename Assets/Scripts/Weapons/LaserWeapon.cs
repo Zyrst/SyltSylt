@@ -15,6 +15,8 @@ public class LaserWeapon : Weapon {
 	protected override void UpdateInherit () {
 		if (shootTimer > 0)
 			shootTimer -= Time.deltaTime;
+
+		transform.position += new Vector3(0, -0.4f, 0) + new Vector3(direction.x, direction.y, 0) * 0.4f;
 	}
 
 

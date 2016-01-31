@@ -20,6 +20,8 @@ public class PlayerFire : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (weapon != null) {
+			
+
 			if (Input.GetButton("Fire" + joyNum)) {
 	            weapon.GetComponent<Weapon>().holdFire();
 	        }
@@ -31,7 +33,12 @@ public class PlayerFire : MonoBehaviour {
 	        weapon.GetComponent<Weapon>().direction = transform.right;
 
 	        if (weapon.GetComponent<Weapon>().getAmmoLeft() <= 0) {
-	        	GameObject.Destroy(weapon);
+	        	//GameObject.Destroy(weapon);
+				//weapon.GetComponent<Rigidbody2D>().isKinematic = false;
+				//weapon.GetComponent<Rigidbody2D>().AddForce((-transform.right + -transform.up) * 10, ForceMode2D.Impulse);
+				//weapon.GetComponent<Rigidbody2D>().AddTorque(Random.Range(-1000, 1000));
+				//weapon.GetComponent<Collider2D>().enabled = true;
+				GameObject.Destroy(weapon);
 	        	weapon = null;
 	        }
         }
